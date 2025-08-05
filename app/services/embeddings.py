@@ -7,3 +7,6 @@ class EmbeddingService:
 
     def embed(self, texts: list[str]) -> np.ndarray:
         return self.model.encode(texts, convert_to_numpy=True)
+
+    def get_embedding_dimension(self):
+        return self.model.get_sentence_embedding_dimension()
