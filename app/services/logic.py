@@ -20,5 +20,15 @@ def retrieve_and_respond(text_chunks: list[str], questions: list[str]) -> dict:
         response = invoke_gemini(prompt)
         results.append({"question": q, "answer": response})
 
-    return results
+    return restructure_response(results)
 
+def restructure_response(response) -> dict:
+    if isinstance(response, dict):
+        response = response.get("answers", [])
+
+    answers = [
+        item["answer"].strip()
+        for item in response
+        if item.get("answer", "").strip()
+    ]
+    return {"answers": answers}

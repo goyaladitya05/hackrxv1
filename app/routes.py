@@ -18,7 +18,7 @@ def run_query(request: QueryRequest, authorization: str = Header(...)):
     full_text = load_from_url(request.documents)
     chunks = split_text(full_text)
     answers = retrieve_and_respond(chunks, request.questions)
-    return {"answers": answers}
+    return answers
 
 @router.get("/health", tags=["Health"])
 async def health_check():

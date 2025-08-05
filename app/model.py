@@ -12,4 +12,4 @@ class Answer(BaseModel):
     #explanation: Optional[str] = None
 
 class QueryResponse(BaseModel):
-    answers: List[Answer]
+    answers: List[str]
