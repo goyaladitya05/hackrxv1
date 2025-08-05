@@ -17,9 +17,15 @@ def download_file(url: str) -> str:
         tmp.write(response.content)
         return tmp.name
 
+import fitz  # PyMuPDF
+
 def extract_text_from_pdf(file_path: str) -> str:
-    doc = fitz.open(file_path)
-    return "\n".join([page.get_text() for page in doc])
+    text = []
+    with fitz.open(file_path) as doc:
+        for page in doc:
+            text.append(page.get_text())
+    return "\n".join(text)
+
 
 def extract_text_from_docx(file_path: str) -> str:
     doc = docx.Document(file_path)
