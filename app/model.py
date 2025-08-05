@@ -8,8 +8,8 @@ class QueryRequest(BaseModel):
 class Answer(BaseModel):
     question: str
     answer: str
-    clause: Optional[str] = None
-    explanation: Optional[str] = None
+    #clause: Optional[str] = None
+    #explanation: Optional[str] = None
 
 class QueryResponse(BaseModel):
     answers: List[Answer]

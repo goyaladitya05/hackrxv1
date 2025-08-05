@@ -16,7 +16,7 @@ def retrieve_and_respond(text_chunks: list[str], questions: list[str]) -> dict:
         q_vec = embedding_model.embed([q])
         top_chunks = vs.search(q_vec, top_k=5)
         context = "\n".join([c for c, _ in top_chunks])
-        prompt = f"You are a helpful assistant. Given the context below, answer the user's question.\n\nContext:\n{context}\n\nQuestion: {q}\n\nAnswer:"
+        prompt = f"You are a helpful assistant. Given the context below, answer the user's question in a single concise sentence. You may use commas but do not use bullet points or new lines.\n\nContext:\n{context}\n\nQuestion: {q}\n\nAnswer:"
         response = invoke_gemini(prompt)
         results.append({"question": q, "answer": response})
 
