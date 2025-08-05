@@ -42,3 +42,4 @@ def load_from_url(url: str) -> str:
         return extract_text_from_email(path)
     else:
         raise ValueError("Unsupported file format")
+
